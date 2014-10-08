@@ -15,28 +15,23 @@ public class Game {
 		for (int i = 0; i < 9; i++) {
 			if (board.charAt(i) == '-') {
 				Game game = play(i, player);
-				System.out.println(game.board);
-				if (game.winner() == player) {
-					System.out.println("Found winner " + board + " " + game.board);
-					return i;}
+				if (game.winner() == player) 
+					return i;
 			}
 		}
 
 		for (int i = 0; i < 9; i++) {
-			if (board.charAt(i) == '-') {
-				System.out.println(board);
-				return i;}
+			if (board.charAt(i) == '-') 
+				return i;
 		}	
 		return -1;
 	}
 
 	public Game play(int i, char player) {
-		System.out.println("play");
 		return new Game(this.board, i, player);
 	}
 
 	public char winner() {
-		System.out.println("Find winner");
 		if (board.charAt(0) != '-' 
             && board.charAt(0) == board.charAt(1) 
             && board.charAt(1) == board.charAt(2))

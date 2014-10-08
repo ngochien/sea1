@@ -8,25 +8,21 @@ public class GameTest extends TestCase {
 
 	public void testDefaultMove() {
 		Game game = new Game("XOXOX-OXO");
-//		assertEquals(5, game.move('X'));
+		assertEquals(5, game.move('X'));
 
-//		game = new Game("XOXOXOOX-");
-//		assertEquals(8, game.move('O'));
+		game = new Game("XOXOXOOX-");
+		assertEquals(8, game.move('O'));
 
 		game = new Game("---------");
 		assertEquals(0, game.move('X'));
-		System.out.println(game.board);
 
-//		game = new Game("XXXXXXXXX");
-//		assertEquals(-1, game.move('X'));
+		game = new Game("XXXXXXXXX");
+		assertEquals(-1, game.move('X'));
 	}
 
 	public void testFindWinningMove() {
 		Game game = new Game("XO-XX-OOX");
 		assertEquals(5, game.move('X'));
-		
-		game = new Game("OXX-OOXXO");
-		assertEquals(3, game.move('X'));
 	}
 
 	public void testWinConditions() {
