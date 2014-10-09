@@ -36,12 +36,16 @@ public class Game {
 	}
 
 	public char winner() {
-		for (int i = 0; i < 7; i++) {
-			if (board.charAt(i) != '-'
-					&& board.charAt(i) == board.charAt(i + 1)
-					&& board.charAt(1) == board.charAt(i + 2))
-				return board.charAt(i);
+		for (int field = 0; field < 7; field++) {
+			if (isFieldAvailable(field)
+					&& board.charAt(field) == board.charAt(field + 1)
+					&& board.charAt(1) == board.charAt(field + 2))
+				return board.charAt(field);
 		}
 		return '-';
+	}
+
+	private boolean isFieldAvailable(int field) {
+		return board.charAt(field) != '-';
 	}
 }
