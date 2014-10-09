@@ -24,11 +24,14 @@ public class Game {
 			}
 		}
 
+		int defaultMove = NO_MOVE;
 		for (int move = 0; move < 9; move++) {
-			if (isFieldAvailable(move))
-				return move;
+			if (isFieldAvailable(move)) {
+				defaultMove = move;
+				return defaultMove;
+			}
 		}
-		return NO_MOVE;
+		return defaultMove;
 	}
 
 	public Game play(int move, char player) {
@@ -38,9 +41,10 @@ public class Game {
 	public char winner() {
 		for (int field = 0; field < 7; field += 3) {
 			if (!isFieldAvailable(field)
-					&& board.charAt(field) == board.charAt(field+1)
-					&& board.charAt(field+1) == board.charAt(field+2))
+					&& board.charAt(field) == board.charAt(field + 1)
+					&& board.charAt(field + 1) == board.charAt(field + 2)) {
 				return board.charAt(field);
+			}
 		}
 		return '-';
 	}
