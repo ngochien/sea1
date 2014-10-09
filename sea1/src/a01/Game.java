@@ -12,23 +12,23 @@ public class Game {
 	}
 
 	public int move(char player) {
-		for (int i = 0; i < 9; i++) {
-			if (board.charAt(i) == '-') {
-				Game game = play(i, player);
+		for (int move = 0; move < 9; move++) {
+			if (board.charAt(move) == '-') {
+				Game game = play(move, player);
 				if (game.winner() == player) 
-					return i;
+					return move;
 			}
 		}
 
-		for (int i = 0; i < 9; i++) {
-			if (board.charAt(i) == '-') 
-				return i;
+		for (int move = 0; move < 9; move++) {
+			if (board.charAt(move) == '-') 
+				return move;
 		}	
 		return -1;
 	}
 
-	public Game play(int i, char player) {
-		return new Game(this.board, i, player);
+	public Game play(int move, char player) {
+		return new Game(this.board, move, player);
 	}
 
 	public char winner() {
