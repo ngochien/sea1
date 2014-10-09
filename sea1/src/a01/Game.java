@@ -17,7 +17,7 @@ public class Game {
 
 	public int move(char player) {
 		for (int move = 0; move < 9; move++) {
-			if (board.charAt(move) == '-') {
+			if (isFieldAvailable(move)) {
 				Game game = play(move, player);
 				if (game.winner() == player)
 					return move;
@@ -25,7 +25,7 @@ public class Game {
 		}
 
 		for (int move = 0; move < 9; move++) {
-			if (board.charAt(move) == '-')
+			if (isFieldAvailable(move))
 				return move;
 		}
 		return NO_MOVE;
