@@ -37,7 +37,7 @@ public class Game {
 
 	public char winner() {
 		for (int field = 0; field < 7; field++) {
-			if (isFieldAvailable(field)
+			if (!isFieldAvailable(field)
 					&& board.charAt(field) == board.charAt(field + 1)
 					&& board.charAt(1) == board.charAt(field + 2))
 				return board.charAt(field);
@@ -46,6 +46,6 @@ public class Game {
 	}
 
 	private boolean isFieldAvailable(int field) {
-		return board.charAt(field) != '-';
+		return board.charAt(field) == '-';
 	}
 }
