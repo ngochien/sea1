@@ -1,6 +1,8 @@
 package a01;
 
 public class Game {
+	private static int NO_MOVE = -1;
+	
 	public StringBuffer board;
 
 	public Game(String s) {board = new StringBuffer(s);}
@@ -24,7 +26,7 @@ public class Game {
 			if (board.charAt(move) == '-') 
 				return move;
 		}	
-		return -1;
+		return NO_MOVE;
 	}
 
 	public Game play(int move, char player) {
