@@ -1,9 +1,9 @@
 package a01;
 
 public class Game {
-	private static int NO_MOVE = -1;
+	public static int NO_MOVE = -1;
 
-	public StringBuffer board;
+	private StringBuffer board;
 
 	public Game(String s) {
 		board = new StringBuffer(s);
@@ -16,19 +16,16 @@ public class Game {
 	}
 
 	public int move(char player) {
-		for (int move = 0; move < 9; move++) {
-			if (isFieldAvailable(move)) {
-				Game game = play(move, player);
-				if (game.winner() == player)
-					return move;
-			}
-		}
-
 		int defaultMove = NO_MOVE;
+
 		for (int move = 0; move < 9; move++) {
 			if (isFieldAvailable(move)) {
 				defaultMove = move;
-				return defaultMove;
+				Game game = play(move, player);
+				if (game.winner() == player) {
+					defaultMove = move;
+					break;
+				}
 			}
 		}
 		return defaultMove;
