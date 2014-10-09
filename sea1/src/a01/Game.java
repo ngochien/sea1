@@ -2,10 +2,12 @@ package a01;
 
 public class Game {
 	private static int NO_MOVE = -1;
-	
+
 	public StringBuffer board;
 
-	public Game(String s) {board = new StringBuffer(s);}
+	public Game(String s) {
+		board = new StringBuffer(s);
+	}
 
 	public Game(StringBuffer s, int position, char player) {
 		board = new StringBuffer();
@@ -17,15 +19,15 @@ public class Game {
 		for (int move = 0; move < 9; move++) {
 			if (board.charAt(move) == '-') {
 				Game game = play(move, player);
-				if (game.winner() == player) 
+				if (game.winner() == player)
 					return move;
 			}
 		}
 
 		for (int move = 0; move < 9; move++) {
-			if (board.charAt(move) == '-') 
+			if (board.charAt(move) == '-')
 				return move;
-		}	
+		}
 		return NO_MOVE;
 	}
 
@@ -34,18 +36,12 @@ public class Game {
 	}
 
 	public char winner() {
-		if (board.charAt(0) != '-' 
-            && board.charAt(0) == board.charAt(1) 
-            && board.charAt(1) == board.charAt(2))
-			return board.charAt(0);
-		if (board.charAt(3) != '-' 
-            && board.charAt(3) == board.charAt(4) 
-            && board.charAt(4) == board.charAt(5))
-			return board.charAt(3);
-		if (board.charAt(6) != '-' 
-            && board.charAt(6) == board.charAt(7) 
-            && board.charAt(7) == board.charAt(8))
-			return board.charAt(6);
+		for (int i = 0; i < 7; i++) {
+			if (board.charAt(i) != '-'
+					&& board.charAt(i) == board.charAt(i + 1)
+					&& board.charAt(1) == board.charAt(i + 2))
+				return board.charAt(i);
+		}
 		return '-';
 	}
 }
